@@ -1,0 +1,33 @@
+{
+    "name": "quick-start-cli",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "bin": {
+        "ppx": "./bin/cli.js"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Lin-Tui/quick-start-cli.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Lin-Tui/quick-start-cli/issues"
+    },
+    "homepage": "https://github.com/Lin-Tui/quick-start-cli#readme",
+    "dependencies": {
+        "chalk": "^4.1.2",
+        "commander": "^9.1.0",
+        "ejs": "^3.1.6",
+        "fs-extra": "^10.0.1",
+        "inquirer": "^8.2.2",
+        "ora": "^5.4.1"
+    },
+    "devDependencies": {
+        "prettier": "^2.6.1"
+    }
+}
