@@ -1,5 +1,5 @@
 {
-  "name": "templates",
+  "name": "<%= projectName %>",
   "version": "1.0.0",
   "description": "",
   "main": "./lib/index.cjs.js",
@@ -12,47 +12,62 @@
     "dev": "rollup -w -c",
     "build": "rollup -c",
     "clean": "rimraf lib",
+    <% if(useLint){ %>
     "lint:check": "eslint ./src",
     "lint:fix": "npm run lint:check --fix",
+    <% } %>
+    <% if(usePrettier) { %>
     "prettier:check": "prettier --check ./src",
     "prettier:fix": "prettier --write ./src",
+    <% } %>
+    <% if(useLint && usePrettier) { %>
     "format:check": "npm run lint:check && npm run prettier:check",
     "format:fix": "npm run lint:fix && npm run prettier:fix"
+    <% } %>
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
-  "lint-staged": {
-    "**/*.{js,ts,json,md}": [
-      "prettier -w"
-    ],
-    "**/*.{js,ts}": [
-      "yarn lint:fix"
-    ]
-  },
+  <% if(useGitHook) { %>
+    "husky": {
+      "hooks": {
+        "pre-commit": "lint-staged",
+        "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+      }
+    },
+    "lint-staged": {
+      "**/*.{js,ts,json,md}": [
+        "prettier -w"
+      ],
+      "**/*.{js,ts}": [
+        "yarn lint:fix"
+      ]
+    },
+  <% } %>
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@commitlint/cli": "^16.2.3",
-    "@commitlint/config-conventional": "^16.2.1",
     "@rollup/plugin-commonjs": "^21.0.2",
     "@rollup/plugin-node-resolve": "^13.1.3",
     "@rollup/plugin-typescript": "^8.3.1",
-    "@types/jest": "^27.4.1",
+    <% if(useLint){ %>
     "@typescript-eslint/eslint-plugin": "^5.16.0",
     "@typescript-eslint/parser": "^5.16.0",
     "eslint": "^8.12.0",
-    "husky": "^7.0.4",
+    <% } %>
+    <% if(useJest){ %>
+    "@types/jest": "^27.4.1",
     "jest": "^27.5.1",
-    "lint-staged": "^12.3.7",
-    "npm-run-all": "^4.1.5",
+    "ts-jest": "^27.1.4",
+    <% } %>
+    <% if(usePrettier){ %>
     "prettier": "^2.6.1",
+    <% } %>
+    <% if(useGitHook) { %>
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.7",
+    "@commitlint/cli": "^16.2.3",
+    "@commitlint/config-conventional": "^16.2.1",
+    <% } %>
     "rimraf": "^3.0.2",
     "rollup": "^2.70.1",
-    "ts-jest": "^27.1.4",
     "tslib": "^2.3.1",
     "typescript": "^4.6.3"
   },
