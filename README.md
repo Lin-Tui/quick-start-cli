@@ -1,6 +1,7 @@
 # quick-start-cli
 
-一款用于提升工程效率的脚手架-快速初始化 TypeScript+Rollup 项目
+一款用于快速初始化 TypeScript+Rollup 项目，提升工程效率的脚手架。
+
 **支持两种项目模板：**
 
 -   TypeScript + Rollup
