@@ -6,9 +6,6 @@
 
 -   TypeScript + Rollup
 -   TypeScript + Babel + Rollup（待开发）
--   Prettier 代码格式化
--   EsLInt 校验
--   jest 用于单元测试
 
 # TODO：
 
